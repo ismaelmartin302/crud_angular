@@ -1,14 +1,15 @@
-
-
 <div class="contenedor">
     <h1>Aplicación de Clima</h1>
-    <input type="text" [(ngModel)]="ciudad" placeholder="Ingrese una ciudad">
-    <button (click)="buscarClima(ciudad)" id="botonBusqueda">Buscar</button>
-    <div *ngIf="datosClima.ciudadNombre" id="datosClima">
+    <input type="text" [(ngModel)]="ciudad" placeholder="Ingrese una ciudad" aria-label="Ingrese una ciudad">
+    <button (click)="buscarCiudad()" id="botonBusqueda">Buscar</button>
+    @if (datosClima.ciudadNombre) {
+      <div id="datosClima">
         <h2>{{ datosClima.ciudadNombre }}, {{ datosClima.paisNombre }}</h2>
         <p>La temperatura es: {{ datosClima.temperatura }}ºC</p>
         <p>La humedad es: {{ datosClima.humedad }}%</p>
         <img [src]="datosClima.icono" alt="Icono del clima">
         <p>La descripción meteorológica es: {{ datosClima.descripcion }}</p>
-    </div>
-</div>
+      </div>
+    }
+  </div>
+  

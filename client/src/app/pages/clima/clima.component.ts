@@ -1,53 +1,64 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ClimaService } from '../../services/clima.service';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 
 @Component({
   selector: 'app-clima',
-  standalone: true,
-  imports: [CommonModule, FormsModule,], // Agregar CommonModule aquí
   templateUrl: './clima.component.html',
-  styleUrl: './clima.component.scss'
-
-
+  styleUrls: ['./clima.component.scss'],
+  standalone: true,
+  imports: [FormsModule,CommonModule],
 })
+export class ClimaComponent  {
 
 
+  ciudad: string = '';
+  private _climaService = inject(ClimaService);
+  datosClima:any;
+
+
+  buscarCiudad() {
+    this._climaService.buscarClima(this.ciudad).subscribe(
+      (data) => {
+        this.datosClima = this._climaService.procesarDatosClima(data);
+      });
+  }
+ 
+  
+}
+
+
+/* import { Component, inject } from '@angular/core';
+import { ClimaService } from '../../services/clima.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+
+@Component({
+  selector: 'app-clima',
+  templateUrl: './clima.component.html',
+  styleUrls: ['./clima.component.css'],
+  imports: [FormsModule,CommonModule],
+  standalone: true,
+})
 export class ClimaComponent {
-  urlBase = 'https://api.openweathermap.org/data/2.5/weather';
-  api_key = '605507acf87117e111e54a3ab5238541';
-  difKelvin = 273.15;
-  datosClima: any = {};
-  ciudad: string = ''; // Definición de la propiedad ciudad
 
 
-  constructor() { }
+  ciudad: string = '';
+  datosClima: any;
 
 
-  buscarClima(ciudad: string) {
-    if (ciudad) {
-      this.fetchDatosClima(ciudad);
-    }
-  }
+  constructor(private climaService: ClimaService) { }
 
 
-  fetchDatosClima(ciudad: string) {
-    fetch(`${this.urlBase}?q=${ciudad}&appid=${this.api_key}`)
-      .then(data => data.json())
-      .then(data => this.mostrarDatosClima(data));
-  }
-
-
-  mostrarDatosClima(data: any) {
-    this.datosClima = {
-      ciudadNombre: data.name,
-      paisNombre: data.sys.country,
-      temperatura: Math.floor(data.main.temp - this.difKelvin),
-      humedad: data.main.humidity,
-      descripcion: data.weather[0].description,
-      icono: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-    };
+  buscarCiudad() {
+    this.climaService.buscarClima(this.ciudad)
+      .subscribe((data: any) => {
+        this.datosClima = this.climaService.procesarDatosClima(data);
+      });
   }
 }
+ */
