@@ -1,0 +1,21 @@
+:host {
+    padding-top: auto;
+    margin: 0;
+  }
+  
+  h1 {
+    color: #007bff; /* Azul Bootstrap */
+  }
+  
+  .lead {
+    color: #28a745; /* Verde Bootstrap */
+  }
+  
+  .visit-counter {
+    background-color: #ffc107; /* Amarillo Bootstrap */
+    border: 2px solid #007bff; /* Borde azul */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    font-size: 18px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+  }
