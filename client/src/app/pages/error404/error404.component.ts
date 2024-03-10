@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-error404',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  templateUrl: './error404.component.html',
+  styleUrl: './error404.component.scss'
 })
-export class HeaderComponent {
+export class Error404Component {
 
 }

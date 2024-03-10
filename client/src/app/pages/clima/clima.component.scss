@@ -1,14 +1,15 @@
+@import "var";
+
 .contenedor {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     text-align: center;
-    background-color: #a0d3ff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: $gray-dark;
   }
   
   h1 {
-    color: #333333;
+    color: $light;
   }
   
   input[type="text"] {
@@ -20,8 +21,8 @@
   button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff;
-    color: #ffffff;
+    background-color: $primary;
+    color: $light;
     border: none;
     cursor: pointer;
   }
@@ -29,5 +30,6 @@
   #datosClima {
     margin-top: 20px;
     font-size: 18px;
+    color: $light;
   }
   
