@@ -8,6 +8,7 @@ LEYENDA:
 
 
 FIXME:
+<!-- ^ La barra de busqueda 1º solo busca paginas que esten en el app.routes.ts y 2º solo busca valores exactos (ej poke Si funciona pero pok devuelve 404) -->
 <!-- * En la pokeapi habría que cambiar la mayúscula inicial del nombre del pokemon, que la id siempre tenga 4 digitos, que el tipo este en español -->
 <!-- ? En la pokeapi si se introducen numeros negativos o decimales da error en la consola (No visible para el usuario) -->
 <!-- ? En la pokeapi y en la climaapi cuando llegas por primera vez sale un error en consola (No visible para el usuario) -->
