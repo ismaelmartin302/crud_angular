@@ -1,0 +1,22 @@
+
+<div class="container d-flex flex-column justify-content-center align-items-center gap-5">
+    <div class="d-flex flex-column justify-content-center align-items-center gap-1">
+      <h1>Rick And Morty API</h1>
+      <button (click)="generarPersonaje()" class="btn btn-primary rounded-pill text-white">Generar personaje aleatorio</button>
+    </div>
+    @if (id > 0) {
+      <div class="card">
+        <div class="card-header">
+          <img class="img-fluid card-img-top bg-light-subtle rounded-5" src="{{ personaje.imagenPersonaje }}">
+        </div>
+        <div class="card-body">
+          <h2 class="card-subtitle fs-5 text-body-tertiary mb-2">{{ personaje.nombrePersonaje }}</h2>
+          <div class="card-footer d-flex g-1 justify-content-around">
+            <h2 class="card-subtitle fs-6 text-body-tertiary"><i class="fas fa-circle-dot {{ personaje.status }}"></i> {{ personaje.status }}</h2>
+            <h2 class="card-subtitle fs-6 text-body-tertiary"><i class="fas fa-person"></i> {{ personaje.species }}</h2>
+          </div>
+        </div>
+      </div>
+    }
+    </div>
+      

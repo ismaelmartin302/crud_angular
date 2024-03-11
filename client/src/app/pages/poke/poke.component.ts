@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class PokeComponent {
 
-  pokeID: number = 2;
+  pokeID: number = 0;
   private _pokeService = inject(PokeService);
   datosPokemon:any;
   
