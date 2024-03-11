@@ -1,2 +1,23 @@
 
+<div class="container d-flex flex-column justify-content-center align-items-center gap-5">
+  <div class="d-flex flex-column justify-content-center align-items-center gap-1">
+    <h1>PokeAPI</h1>
+    <h2 class="lead">Introduce un número y te devolverá el pokemón con esa ID</h2>
+    <input type="number" [(ngModel)]="pokeID" (input)="buscarPokemon()" class="btn btn-light">
+  </div>
+    @if (datosPokemon?.nombrePoke) {
+      <div class="card">
+        <img class="img-fluid card-img-top bg-light-subtle rounded-5" src="{{ datosPokemon.imagenPoke }}">
+        <div class="card-body">
+          <h2 class="card-subtitle fs-5 text-body-tertiary">Nº {{ datosPokemon.idPoke }}</h2>
+          <h2 class="card-title fw-bold">{{ datosPokemon.nombrePoke }}</h2>
+        </div>
+        <div class="d-flex justify-content-around">
+          @for (item of datosPokemon.tiposPoke; track $index) {
+            <h2 class="p-2 pe-3 ps-3 text-light rounded-pill   {{item.type.name}} ">{{ item.type.name }}</h2>
+          }
+        </div>
+      </div>
+    }
+  </div>
   
