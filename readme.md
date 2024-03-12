@@ -14,6 +14,7 @@ Para inicializar el Servidor hay que situarse en el directorio padre y ejecutar 
 
 ```http
 cd .\server\
+npm i
 node .\server.js
 ```
 
@@ -24,6 +25,8 @@ Similar al Servidor hay que situarse en el directorio padre y ejecutar el siguie
 
 
 ```http
+cd .\client\
+npm i
 ng s
 ```
 
