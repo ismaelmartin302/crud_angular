@@ -46,22 +46,14 @@ async function connectToMongoDB() {
 
 // GET route - Allows to get all the items
 app.get('/crud', async(req, res) => {
-    const page = parseInt(req.query.page) || 0;
-    const perPage = parseInt(req.query.perPage) || 10;
-
     try {
         const db = await connectToMongoDB();
         const collection = db.collection('tweets');
 
-        const totalTweets = await collection.countDocuments();
-        const items = await collection.find().skip(page * perPage).limit(perPage).toArray();
+        const items = await collection.find().toArray();
 
         res.status(200).json({
-            items,
-            total: totalTweets,
-            page,
-            perPage,
-            totalPages: Math.ceil(totalTweets / perPage)
+            items
         });
     } catch (err) {
         console.error('Error fetching items', err);
@@ -78,9 +70,8 @@ app.post('/crud', async(req, res) => {
         const collection = db.collection('tweets');
 
         const result = await collection.insertOne({ usuario, contenido });
-        const newItem = result.ops[0];
 
-        res.status(201).json(newItem);
+        res.status(201).json(result);
     } catch (err) {
         console.error('Error adding item', err);
         res.status(500).send('Internal Server Error');
@@ -124,7 +115,7 @@ app.delete('/crud/:id', async(req, res) => {
         const db = await connectToMongoDB();
         const collection = db.collection('tweets');
 
-        const result = await collection.deleteOne({ _id: ObjectId(id) });
+        const result = await collection.deleteOne({ _id: new ObjectId(id) });
 
         if (result.deletedCount === 0) {
             res.status(404).send('Not Found');
