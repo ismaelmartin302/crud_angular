@@ -1,0 +1,67 @@
+<div class="d-flex flex-column w-50 m-auto">
+
+    <div class="m-3 rounded-3 p-2 d-flex border flex-column gap-3 ">
+        <h2>Subir Tweet</h2>
+        <div class="form-group">
+            <label for="usuario">Usuario</label>
+            <input type="text" class="form-control" id="usuario" name="usuario" [(ngModel)]="nuevoTweet.usuario" required>
+        </div>
+        <div class="form-group">
+            <label for="contenido">Contenido</label>
+            <textarea class="form-control" id="contenido" name="contenido" [(ngModel)]="nuevoTweet.contenido"
+                required></textarea>
+        </div>
+        <div>
+            <button type="button" (click)="createTweet()"
+                class="btn btn-primary rounded-pill text-white fw-bold">Postear</button>
+        </div>
+    </div>
+    
+    @if (error) {
+        <p class="text-warning ">Ha ocurrido un error al intentar postear un tweet</p>
+    } @else {
+        <div>
+            @for (tweet of tweets; track $index) {
+        
+            <div class="text-white d-flex gap-3 rounded-3 p-2 border m-3 position-relative">
+                <button type="button" (click)="deleteTweet(tweet._id)"
+                    class="position-absolute end-0 me-1 bg-transparent border-0 text-light"><i class="fas fa-xmark"></i></button>
+                <button type="button" (click)="editarTweet($index)"
+                    class="position-absolute end-0 me-4 bg-transparent border-0 text-light"><i class="fas fa-pencil"></i></button>
+                <img class="card-img-top rounded-circle" style="width: 3em; height: 3em;"
+                    src="https://www.github.com/{{ tweet.usuario }}.png" alt="">
+        
+                <div>
+                    <h2>{{ tweet.usuario }}</h2>
+                    <p>{{ tweet.contenido }}</p>
+                </div>
+                <hr>
+            </div>
+    
+            @if (editar === $index) {
+                <div class="position-absolute  container-fluid  d-flex justify-content-center align-items-center">
+                    <div class="position-absolute m-auto d-flex flex-column bg-light text-dark gap-2 z-1 p-5 rounded-5 border">
+        
+                        <h2>Editar Tweet</h2>
+                        <div class="form-group">
+                            <label for="usuario">Nuevo usuario:</label>
+                            <input type="text" class="form-control" [(ngModel)]="tweet.nuevoUsuario" id="usuario">
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="contenido">Nuevo contenido:</label>
+                            <textarea class="form-control" [(ngModel)]="tweet.nuevoContenido" id="contenido"></textarea>
+                        </div>
+                        <div>
+                            <button type="button" (click)="updateTweet(tweet._id, {usuario: tweet.nuevoUsuario, contenido: tweet.nuevoContenido})"
+                                class="btn btn-primary rounded-pill text-white fw-bold">Postear</button>
+                        </div>
+        
+                    </div>
+                </div>
+            }
+            }
+        </div>
+    }
+
+</div>    
