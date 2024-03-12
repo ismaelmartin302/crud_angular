@@ -1,0 +1,35 @@
+@import "var";
+
+.contenedor {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: $gray-dark;
+  }
+  
+  h1 {
+    color: $light;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    width: 70%;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: $primary;
+    color: $light;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #datosClima {
+    margin-top: 20px;
+    font-size: 18px;
+    color: $light;
+  }
+  
