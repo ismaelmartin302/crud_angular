@@ -88,7 +88,7 @@ app.put('/crud/:id', async(req, res) => {
         const collection = db.collection('tweets');
 
         const result = await collection.findOneAndUpdate(
-            { _id: ObjectId(id) },
+            { _id: new ObjectId(id) },
             { $set: { usuario, contenido } },
             { returnOriginal: false }
         );
